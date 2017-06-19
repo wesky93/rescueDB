@@ -19,6 +19,12 @@ from django.contrib import admin
 from record.views import *
 
 urlpatterns = [
+    # 메인 페이지
     url(r'^$',Home.as_view(),name='home'),
-    url(r'^')
+    # 구조 기록
+    url(r'^list/$',Records.as_view(),name='list'),
+    # 상세 구조 페이지
+    url(r'detail/(?P<pk>\d+)/$',Detail.as_view(),name='detail'),
+    # 구조 정보 입력 폼
+    url(r'^input/$',Input.as_view(),name='input'),
 ]
