@@ -1,8 +1,12 @@
 from django.contrib import admin
-from .models import RescueInfo
+from .models import Rescue,Attachment
 
 # Register your models here.
 
-@admin.register(RescueInfo)
-class RescueInfoAdmin(admin.ModelAdmin):
+@admin.register(Rescue)
+class RescueAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Attachment)
+class AttachmentAdmin(admin.ModelAdmin):
     pass

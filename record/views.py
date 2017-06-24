@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView,DetailView,TemplateView,CreateView
-from .models import RescueInfo
+from django.views.generic import ListView,DetailView,TemplateView,CreateView,FormView
+from .forms import RescueForm
+from .models import Rescue
 # Create your views here.
 class Home(TemplateView):
     """
@@ -9,11 +10,14 @@ class Home(TemplateView):
     pass
 
 class Input(CreateView):
-    model = RescueInfo
     """
-    구조 기록 입력 뷰
+    구조 정보 입력
     """
-    pass
+    model = Rescue
+    form_class = RescueForm
+    template_name = 'record/form.html'
+    success_url = '?success'
+
 
 class Records(ListView):
     """
