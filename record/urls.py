@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from django.conf.urls import url,include
+from django.contrib.auth.decorators import login_required
 from django.contrib import admin
 from record.views import *
 
@@ -22,9 +23,9 @@ urlpatterns = [
     # 메인 페이지
     url(r'^$',Home.as_view(),name='home'),
     # 구조 기록
-    url(r'^list/$',Records.as_view(),name='list'),
+    url(r'^list/$',login_required( Records.as_view() ),name='list'),
     # 상세 구조 페이지
-    url(r'detail/(?P<pk>\d+)/$',Detail.as_view(),name='detail'),
+    url(r'detail/(?P<pk>\d+)/$',login_required(Detail.as_view()),name='detail'),
     # 구조 정보 입력 폼
-    url(r'^input/$',Input.as_view(),name='input'),
+    url(r'^input/$',login_required(Input.as_view()),name='input'),
 ]
