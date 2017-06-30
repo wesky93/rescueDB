@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 # Create your models here.
 # 이름 나이 생년월일 주소 핸드폰번호 사고위치 증상 사고원인 구조내용 구조사진
 class Rescue(models.Model):
@@ -9,6 +9,7 @@ class Rescue(models.Model):
     address = models.CharField(verbose_name='요약', max_length=40, blank=True, null=True,)
     phone = models.CharField( verbose_name='연락처', max_length=11,blank=True, null=True,
                               help_text="'-'없이 입력하세요 ex) 01012341234")
+    date = models.DateField(verbose_name='날짜',auto_now_add=True)
 
     # 사고위치
     location = models.CharField(verbose_name='사고위치', max_length=10,null=True)
