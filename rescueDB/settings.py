@@ -115,6 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
+# 로그인 후 리다이렉트 페이
+LOGIN_REDIRECT_URL = '/input/'
 
 # 한국 설정
 LANGUAGE_CODE = config.get('language', 'LANGUAGE_CODE')

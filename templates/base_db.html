@@ -32,12 +32,17 @@
 {# ---body 시작------------------ #}
 {# 이 템플릿은 전체 레이아웃과 공통 컴포넌트 요소만 정의 #}
 {% block body %}
-    <div class="ui sidebar">
 
-    </div>
     <div class="ui top fixed menu">
-        <a class="item">홈</a>
-        <a class="item">추가</a>
+        <a class="item" href="{% url 'home' %}">홈</a>
+        <a class="item" href="{% url 'input' %}">추가</a>
+        {% if user.is_active %}
+            <a class="item" href="{% url 'login' %}">{{ user.username }}</a>
+            <a href="{% url 'logout' %}">로그아웃</a>
+        {% else %}
+            <a class="item" href="{% url 'login' %}"> 로그인</a>
+            <a class="item" href="{% url 'admin:index' %}">관리자</a>
+        {% endif %}
     </div>
 
     <div class="ui main container">
