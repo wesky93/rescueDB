@@ -35,7 +35,8 @@
 
     <div class="ui top fixed menu">
         <a class="item" href="{% url 'home' %}">홈</a>
-        <a class="item" href="{% url 'input' %}">추가</a>
+        <a class="item" href="{% url 'list' %}">구조기록</a>
+        <a class="item" href="{% url 'input' %}">기록 추가</a>
         {% if user.is_active %}
             <a class="item" href="{% url 'login' %}">{{ user.username }}</a>
             <a href="{% url 'logout' %}">로그아웃</a>

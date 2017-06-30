@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView,DetailView,TemplateView,CreateView,FormView
 from .forms import RescueForm
 from .models import Rescue
-# Create your views here.
+
 class Home(TemplateView):
     """
     메인 버튼 노출 뷰
@@ -12,7 +12,7 @@ class Home(TemplateView):
 
 class Input(CreateView):
     """
-    구조 정보 입력
+    구조 정보 입력 폼 뷰
     """
     model = Rescue
     form_class = RescueForm
@@ -24,12 +24,15 @@ class Records(ListView):
     """
     구조기록 목록 뷰
     """
+    model = Rescue
 
     pass
 
+
 class Detail(DetailView):
     """
-    구조 정보 상세 뷰뷰
+    구조 정보 상세 뷰
    """
+    model = Rescue
     pass
 
