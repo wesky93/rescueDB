@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{# ---head 시작----------------- #}
+
+{# head tag - link,meta등등 #}
+{% block head %}
+    {% block meta %}{% endblock %}
+    {% block link %}{% endblock %}
+{% endblock head %}
+
+{# head title tag #}
+{% block title %}무등산국립공원 구조정보DB{% endblock title %}
+
+{# style tag #}
+{% block style %}
+    .main.container {
+    margin-top: 7em;
+    }
+
+    {# 개별 페이지 css - 각 페이지에선 아래 블록을 확장하여 css추가하면 #}
+    {% block pagestyle %}{% endblock %}
+
+{% endblock style %}
+
+{# head태그에 달아야하는 스크립트 #}
+{% block headscript %}{% endblock %}
+
+{# ---head 끝------------------- #}
+
+
+{# ---body 시작------------------ #}
+{# 이 템플릿은 전체 레이아웃과 공통 컴포넌트 요소만 정의 #}
+{% block body %}
+    <div class="ui sidebar">
+
+    </div>
+    <div class="ui top fixed menu">
+        <a class="item">홈</a>
+        <a class="item">추가</a>
+    </div>
+
+    <div class="ui main container">
+
+        {% block main %}
+        {% endblock main %}
+    </div>
+
+{% endblock body %}
+
+{# 페이지 맨 아래에서 호출할 스크립트 #}
+{% block bodyscript %}{% endblock %}
+{# ---body 끝-------------------- #}
