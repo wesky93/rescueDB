@@ -7,6 +7,7 @@ class Home(TemplateView):
     """
     메인 버튼 노출 뷰
     """
+    template_name = 'record/home.html'
     pass
 
 class Input(CreateView):
