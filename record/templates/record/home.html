@@ -1,4 +1,32 @@
 {% extends 'base_db.html' %}
+{% load staticfiles %}
+
+{% block pagestyle %}
+    <!-- 메인 페이지에서는 컨테이너 간격 제거 -->
+    .main.container {
+    margin-top: 1em;
+    }
+    .main.container {
+    margin-top: 2.5em;
+    }
+{% endblock %}
+
+{% block side %}{% endblock side %}
 
 {% block main %}
+    <div class="ui center aligned container">
+        <img class="ui medium image centered" src="{% static 'images/logo.png' %}">
+        <h3>구조정보 관리시스템</h3>
+        <div class="ui hidden divider"></div>
+        <a class="massive ui button" href="{% url 'input' %}">자료 추가</a>
+        <div class="ui hidden divider"></div>
+        <a class="massive ui button" href="{% url 'list' %}">기록 목록</a>
+        <div class=" ui hidden divider"></div>
+        <a class="massive ui button" href="#">기록 검색</a>
+        <div class="ui hidden divider"></div>
+        <h5>made by sinsky(wesky93@gmail.com)</h5>
+    </div>
+
+
+
 {% endblock main %}

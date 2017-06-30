@@ -33,6 +33,7 @@
 {# 이 템플릿은 전체 레이아웃과 공통 컴포넌트 요소만 정의 #}
 {% block body %}
 
+    {% block side %}
     <div class="ui top fixed menu">
         <a class="item" href="{% url 'home' %}">홈</a>
         <a class="item" href="{% url 'list' %}">구조기록</a>
@@ -45,6 +46,7 @@
             <a class="item" href="{% url 'admin:index' %}">관리자</a>
         {% endif %}
     </div>
+    {% endblock side %}
 
     <div class="ui main container">
 
