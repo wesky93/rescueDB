@@ -21,7 +21,7 @@ from record.views import *
 
 urlpatterns = [
     # 메인 페이지
-    url(r'^$',Home.as_view(),name='home'),
+    url(r'^$',login_required( Home.as_view()),name='home'),
     # 구조 기록
     url(r'^list/$',login_required( Records.as_view() ),name='list'),
     # 상세 구조 페이지
