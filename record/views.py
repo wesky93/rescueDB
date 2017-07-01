@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView,TemplateView,CreateView,FormView
 from .forms import RescueForm
-from .models import Rescue
+from .models import Rescue,Attachment
 
 class Home(TemplateView):
     """
@@ -34,5 +34,10 @@ class Detail(DetailView):
     구조 정보 상세 뷰
    """
     model = Rescue
-    pass
+
+    def get_context_data( self, **kwargs ) :
+        context = super( Detail, self ).get_context_data( **kwargs )
+        # 해당 구조기록의 이미지 가져오기
+        context[ 'images' ] = Attachment.objects.filter(rescue=context['rescue']).all().values_list('file',flat=True)
+        return context
 
