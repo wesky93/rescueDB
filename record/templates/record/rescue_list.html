@@ -1,25 +1,26 @@
 {% extends 'base_db.html' %}
 
 {% block main %}
-    <table class="ui celled striped table">
+    <h3>구조기록</h3>
+    <table class="ui celled very compact unstackable striped table">
         <thead>
         <tr>
-            <th colspan="3">
-                구조 목록
-            </th>
+            <th><i class="calendar icon"></i>날짜</th>
+            <th><i class="map icon"></i>구조 위치</th>
+            <th><i class="heartbeat icon"></i>증상</th>
+            <th><i class="asterisk icon"></i>원인</th>
         </tr>
         </thead>
         <!-- 테이블 시작 -->
         <tbody>
         {% for record in object_list %}
-            <tr>
-            <td class="collapsing">
-                <i class="folder icon"></i> {{ record.location }}
-            </td>
-            <td>{{ record.name }}</td>
-            <td class="right aligned collapsing">{{ record.date }}</td>
-        </tr>
-            <li>{{ publisher.name }}</li>
+            <tr onClick="location.href='{% url 'detail' record.id %}'" style="cursor:pointer;">
+                <td class="collapsing">{{ record.date }}</td>
+                <td class="collapsing">{{ record.location }}</td>
+                <td class="collapsing">{{ record.symptom }}</td>
+                <td class="collapsing">{{ record.cause }}</td>
+
+            </tr>
         {% endfor %}
 
         </tbody>
