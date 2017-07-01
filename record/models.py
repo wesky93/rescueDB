@@ -6,7 +6,7 @@ class Rescue(models.Model):
     name = models.CharField( verbose_name='이름', max_length=6 )
     age = models.IntegerField(verbose_name='나이',null=True)
     burth = models.DateField(verbose_name='생년월일',null=True)
-    address = models.CharField(verbose_name='요약', max_length=40, blank=True, null=True,)
+    address = models.CharField(verbose_name='주소', max_length=40, blank=True, null=True,)
     phone = models.CharField( verbose_name='연락처', max_length=11,blank=True, null=True,
                               help_text="'-'없이 입력하세요 ex) 01012341234")
     date = models.DateField(verbose_name='날짜',auto_now_add=True)
