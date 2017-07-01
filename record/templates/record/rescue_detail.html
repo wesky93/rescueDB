@@ -1,4 +1,74 @@
 {% extends 'base_db.html' %}
+{% load staticfiles %}
 
 {% block main %}
+    <h4 class="ui header"><i class="user icon"></i>인적사항</h4>
+    <table class="ui definition unstackable table">
+        <tbody>
+        <tr>
+            <td class="collapsing">이름</td>
+            <td class="collapsing"> {{ rescue.name }}</td>
+        </tr>
+        <tr>
+            <td>생년월일</td>
+            <td>{{ rescue.burth }}</td>
+        </tr>
+        <tr>
+            <td>나이</td>
+            <td>{{ rescue.age }}</td>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td>{{ rescue.address }}</td>
+        </tr>
+        <tr>
+            <td>연락처</td>
+            <td>{{ rescue.phone }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h4 class="ui header"><i class="asterisk icon"></i>구조 정보</h4>
+    <table class="ui definition celled unstackable table">
+        <tbody>
+        <tr>
+            <td class="collapsing">구조 날짜</td>
+            <td class="collapsing"> {{ rescue.date|date }}</td>
+        </tr>
+        <tr>
+            <td>사고 위치</td>
+            <td>{{ rescue.location }}</td>
+        </tr>
+        <tr>
+            <td>증상</td>
+            <td>{{ rescue.symptom }}</td>
+        </tr>
+        <tr>
+            <td>원인</td>
+            <td>{{ rescue.cause }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">내용</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{ rescue.content }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div class="ui segment">
+        <h4><i class="image icon"></i>이미지</h4>
+        <div class="ui hidden divider"></div>
+        <div class="ui centered fluid images">
+            {% if images %}
+                {% for img in images %}
+                    <img src="{% static img %}">
+                {% endfor %}
+            {% else %}
+                <h5>이미지가 없습니다</h5>
+            {% endif %}
+        </div>
+    </div>
+
 {% endblock main %}
