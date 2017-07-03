@@ -1,5 +1,9 @@
 from django.db import models
-import datetime
+from PIL import Image as Img
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from uuid import uuid4
+
 # Create your models here.
 # 이름 나이 생년월일 주소 핸드폰번호 사고위치 증상 사고원인 구조내용 구조사진
 class Rescue(models.Model):
@@ -21,3 +25,16 @@ class Rescue(models.Model):
 class Attachment(models.Model):
     rescue = models.ForeignKey(Rescue, verbose_name='구조')
     file = models.FileField('첨부파일', upload_to='img')
+
+    def save(self, *args, **kwargs):
+        if self.file :
+            img = Img.open( BytesIO( self.file.read() ) )
+            if img.mode != 'RGB' :
+                img = img.convert( 'RGB' )
+            output = BytesIO()
+            img.save( output, format='JPEG', quality=80 )
+            output.seek( 0 )
+            self.file = InMemoryUploadedFile( output, 'FileField', f"{uuid4()}.jpg",
+                                               'image/jpeg', output.__sizeof__(), None )
+        print(self.file.__sizeof__())
+        super(Attachment,self).save()
